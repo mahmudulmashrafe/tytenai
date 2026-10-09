@@ -3,7 +3,12 @@
  * Supports both Bun and standard Node.js runtimes with zero external dependencies.
  */
 
+const http = typeof Bun === 'undefined' ? require('http') : null;
+const fs = typeof Bun === 'undefined' ? require('fs') : null;
+const path = require('path');
+
 const PORT = process.env.PORT || 3000;
+const ROOT_DIR = path.resolve(__dirname, '..');
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -28,11 +33,12 @@ if (typeof Bun !== 'undefined') {
       let pathname = url.pathname;
       if (pathname === '/') pathname = '/index.html';
 
-      const file = Bun.file(`.${pathname}`);
+      const filePath = path.join(ROOT_DIR, pathname);
+      const file = Bun.file(filePath);
       const exists = await file.exists();
 
       if (!exists) {
-        return new Response(Bun.file('./index.html'), {
+        return new Response(Bun.file(path.join(ROOT_DIR, 'index.html')), {
           headers: { 'Content-Type': 'text/html; charset=utf-8' }
         });
       }
@@ -53,20 +59,15 @@ if (typeof Bun !== 'undefined') {
   console.log(`⚡ Press Ctrl+C to terminate\n`);
 } else {
   // Standard Node.js fallback implementation
-  const http = require('http');
-  const fs = require('fs');
-  const path = require('path');
-
   const server = http.createServer((req, res) => {
     let safePath = req.url.split('?')[0];
     if (safePath === '/') safePath = '/index.html';
 
-    const filePath = path.join(__dirname, safePath);
+    const filePath = path.join(ROOT_DIR, safePath);
 
     fs.stat(filePath, (err, stats) => {
       if (err || !stats.isFile()) {
-        // Fallback to index.html
-        fs.readFile(path.join(__dirname, 'index.html'), (readErr, data) => {
+        fs.readFile(path.join(ROOT_DIR, 'index.html'), (readErr, data) => {
           if (readErr) {
             res.writeHead(404, { 'Content-Type': 'text/plain' });
             res.end('404 Not Found');

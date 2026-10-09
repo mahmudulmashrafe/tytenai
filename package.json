@@ -4,7 +4,7 @@
   "description": "Official company website for Tyten AI - Autonomous Enterprise Multi-Agent Intelligence Platform",
   "scripts": {
     "build": "mkdir -p dist && cp -r index.html css js assets dist/",
-    "dev": "bun dev-server.js",
+    "dev": "bun scripts/dev-server.js",
     "serve": "python3 -m http.server 3000"
   },
   "keywords": [
