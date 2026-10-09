@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Official company website for Tyten AI - Autonomous Enterprise Multi-Agent Intelligence Platform",
   "scripts": {
+    "build": "echo 'Static build complete'",
     "dev": "bun dev-server.js",
     "serve": "python3 -m http.server 3000"
   },
