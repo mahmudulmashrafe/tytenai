@@ -5,6 +5,7 @@
 
 # Node & Bun
 node_modules/
+dist/
 bun.lockb
 bun.lock
 npm-debug.log*
