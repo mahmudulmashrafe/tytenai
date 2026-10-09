@@ -1,0 +1,22 @@
+{
+  "name": "tyten-ai-website",
+  "version": "1.0.0",
+  "description": "Official company website for Tyten AI - Autonomous Enterprise Multi-Agent Intelligence Platform",
+  "main": "index.html",
+  "scripts": {
+    "dev": "bun --watch server.js",
+    "start": "bun server.js",
+    "serve": "python3 -m http.server 3000"
+  },
+  "keywords": [
+    "tyten-ai",
+    "artificial-intelligence",
+    "agentic-ai",
+    "autonomous-agents",
+    "enterprise-ai",
+    "multi-agent-systems",
+    "neural-platform"
+  ],
+  "author": "Tyten AI Engineering",
+  "license": "MIT"
+}
