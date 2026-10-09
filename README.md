@@ -28,7 +28,8 @@
 ```bash
 Tyten Ai/
 ├── index.html                   # Core semantic landing page & component layout
-├── server.js                    # Ultra-fast native Bun dev server
+├── dev-server.js                # Multi-runtime dev server (Bun & Node.js)
+├── vercel.json                  # Vercel zero-config static hosting configuration
 ├── package.json                 # Scripts and package metadata
 ├── .gitignore                   # Git exclusion configuration
 ├── README.md                    # Repository documentation
@@ -50,15 +51,15 @@ Tyten Ai/
 
 ## 🚀 Quickstart & Local Development
 
-You can run Tyten AI locally with either **Bun** or standard **Python**:
+You can run Tyten AI locally with either **Bun**, **Node.js**, or standard **Python**:
 
-### Option 1: Using Bun (Recommended)
+### Option 1: Using Bun or Node.js
 ```bash
-# Start the live-reloading dev server
-bun run dev
+# Start local server with Bun
+bun dev-server.js
 
-# Or directly
-bun server.js
+# Or with Node.js
+node dev-server.js
 ```
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
